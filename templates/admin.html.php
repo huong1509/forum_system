@@ -1,9 +1,3 @@
-<?php 
-    $title = 'Admin Area';
-    include('includes/header.php');
-    include('includes/nav.php');
-    session_start();
-?>
 
 <div class="py-5">
     <div class="container">
@@ -15,6 +9,3 @@
         </div>
     </div>
 </div>
-
-
-<?php include('includes/footer.php');?>
