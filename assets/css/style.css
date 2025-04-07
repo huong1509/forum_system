@@ -1,0 +1,89 @@
+.post-feed {
+    max-width: 650px;
+    margin: 30px auto;
+    font-family: Arial, sans-serif;
+}
+
+.post-card {
+    background: #f8f8f8;
+    color: rgb(0, 0, 0);
+    padding: 15px;
+    border-radius: 12px;
+    margin-bottom: 25px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+}
+
+.post-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.user-info {
+    flex-grow: 1;
+}
+
+.username {
+    font-weight: bold;
+    font-size: 25px;
+}
+
+.post-time {
+    font-size: 15px;
+    color: #363636;
+}
+
+.post-module {
+    font-size: 15px;
+    color: #363636;
+}
+
+.edit, .delete {
+    font-size: 13px;
+    cursor: pointer;
+    padding: 10px 6px;
+}
+
+.edit {
+    color: #1216ff;
+}
+.delete {
+    color: #c20909;
+}
+
+.post-content {
+    margin-top: 10px;
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+.post-image {
+    width: 100%;
+    border-radius: 10px;
+    margin-top: 10px;
+    object-fit: cover;
+}
+
+.post-footer {
+    margin-top: 12px;
+}
+
+.interaction-stats {
+    font-size: 13px;
+    color: #000000;
+    margin-bottom: 8px;
+}
+
+.interaction-buttons button {
+    background: transparent;
+    border: none;
+    color: #000000;
+    margin-right: 15px;
+    cursor: pointer;
+    font-size: 20px;
+    transition: color 0.3s;
+}
+
+.interaction-buttons button:hover {
+    color: #8d8d8d;
+}

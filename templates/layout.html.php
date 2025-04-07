@@ -1,5 +1,7 @@
 <?php
-$BASE_URL = '/forum_system'?>
+$BASE_URL = '/forum_system';
+
+?>
 
 <!doctype html>
 <html lang="en">
@@ -8,6 +10,7 @@ $BASE_URL = '/forum_system'?>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title><?php if(isset($title)) { echo"$title"; }?></title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet">
+    
 </head>
 
 <body>
@@ -24,12 +27,18 @@ $BASE_URL = '/forum_system'?>
                             </button>
 
                             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                            <ul class="navbar-nav ms-auto mb-2 mb-lg-1">
                                 <li class="nav-item">
                                     <a class="nav-link active" href="<?=$BASE_URL?> /index.php">Home</a>
                                 </li>
                                 <li class="nav-item">
+                                    <a class="nav-link active" href="<?=$BASE_URL?> /controllers/crud/posts-code.php">All Post</a>
+                                </li>
+                                <li class="nav-item">
                                     <a class="nav-link active" href="<?=$BASE_URL?> /controllers/crud/mypost-code.php">My Post</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link active" href="admin-code.php">Contact Us</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link active" href="admin-code.php">Admin Area</a>
