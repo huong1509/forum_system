@@ -18,7 +18,7 @@
                         <h5>Update Password</h5>
                     </div>
                     <div class="card-body">
-                        <form action="password-change-code.php" method="post">
+                        <form action="" method="post">
                             <div class="form-group mb-3">
                                 <label for="email">Email address: </label>
                                 <input type="text" name="email" class="form-control" placeholder="Enter your email address">

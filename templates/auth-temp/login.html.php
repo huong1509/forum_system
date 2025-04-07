@@ -1,3 +1,10 @@
+<?php
+if(isset($_SESSION['authenticated'])){
+    $_SESSION['status'] = 'You are already login!';
+    header('Location: index.php');
+    exit(0);
+}
+?>
 
 <div class="py-5">
     <div class="container">
@@ -15,14 +22,10 @@
                 ?>
                 <div class="card shadow">
                     <div class="card-header">
-                        <h5>Sign Up </h5>
+                        <h5>Login</h5>
                     </div>
                     <div class="card-body">
-                        <form action="signup-code.php" method="post">
-                            <div class="form-group mb-3">
-                                <label for="username">Username: </label>
-                                <input type="text" name="username" class="form-control" placeholder="Huong">
-                            </div>
+                        <form action="" method="post">
 
                             <div class="form-group mb-3">
                                 <label for="name">Email: </label>
@@ -34,13 +37,12 @@
                                 <input type="password" name="password" class="form-control" placeholder="">
                             </div>
 
-                            <div class="form-group mb-3">
-                                <label for="name">Confirm Password: </label>
-                                <input type="password" name="confirm_password" class="form-control" placeholder="">
-                            </div>
                             <div class="form-group">
-                                <button type="submit" name="btn_sign_up" class="btn btn-primary">Sign Up</button>
+                                <button type="submit" name="btn_login" class="btn btn-primary">Login Now</button>
+
+                                <a href="password-reset-code.php" class="float-end">Forgot your password?</a>
                             </div>
+
                         </form>
                     </div>
                 </div>
@@ -48,4 +50,6 @@
         </div>
     </div>
 </div>
+
+
 

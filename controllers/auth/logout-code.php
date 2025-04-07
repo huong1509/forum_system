@@ -6,5 +6,5 @@ unset($_SESSION['auth_account']);
 
 $_SESSION['status'] = 'You are log out successfully!';
 
-header('location: index.php');
+header('location:  /forum_system/index.php');
 ?>

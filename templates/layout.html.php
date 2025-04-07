@@ -1,3 +1,6 @@
+<?php
+$BASE_URL = '/forum_system'?>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -23,26 +26,26 @@
                             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                                 <li class="nav-item">
-                                    <a class="nav-link active" href="index.php">Home</a>
+                                    <a class="nav-link active" href="<?=$BASE_URL?> /index.php">Home</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link active" href="mypost-code.php">My Post</a>
+                                    <a class="nav-link active" href="<?=$BASE_URL?> /controllers/crud/mypost-code.php">My Post</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link active" href="admin-code.php">Admin Area</a>
                                 </li>
                                 <?php if(!isset($_SESSION['authenticated'])):?>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="signup-code.php">Sign Up</a>
+                                    <a class="nav-link" href="<?=$BASE_URL?> /controllers/auth/signup-code.php">Sign Up</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="login-code.php">Sign In</a>
+                                    <a class="nav-link" href="<?=$BASE_URL?> /controllers/auth/login-code.php">Sign In</a>
                                 </li>
                                 <?php endif?>
 
                                 <?php if(isset($_SESSION['authenticated'])):?>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="logout-code.php">Log Out</a>
+                                    <a class="nav-link" href="<?=$BASE_URL?> /controllers/auth/logout-code.php">Log Out</a>
                                 </li>
                                 <?php endif?>
 
