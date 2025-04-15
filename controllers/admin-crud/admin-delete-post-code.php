@@ -12,13 +12,13 @@ if(isset($_POST['btn_delete'])){
     $run = deletePost($pdo, $_POST['id']);
 
     if($run) {
-        $_SESSION['status'] = 'Delete post successful!';
-        header('location: mypost-code.php');
+        $_SESSION['status'] = 'Delete successful!';
+        header('location: admin-posts-code.php');
         exit();
     } else {
         $_SESSION['status'] = 'Something went wrong!';
     }
 }
 
-include BASE_PATH . '/templates/layout.html.php';
+include BASE_PATH . '/templates/admin-layout.html.php';
 ?>

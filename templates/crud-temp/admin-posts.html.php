@@ -1,8 +1,7 @@
 
 <head>
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="../../assets/css/style.css">
 </head>
-
 <div class="py-5">
     <div class="container">
         <div class="row justify-content-center">
@@ -17,36 +16,36 @@
                     unset($_SESSION['status']);
                 }
             ?>
-            <div class="card">
-                <div class="card-header">
-                    <h3>Welcome, This is home page</h3>
-                </div>
-            </div>
-            <br>
-            <div class="d-grid gap-2">
-            <button class="btn btn-light border border-lighgrey rounded-pill shadow-sm" onclick="window.location.href='controllers/crud/add-post-code.php'">Write your post here....</button>
-            </div>
 
+            <!-- <div class="d-grid gap-2">
+            <button class="btn btn-light border border-lighgrey rounded-pill shadow-sm" onclick="window.location.href='add-post-code.php'">Write your post here....</button>
+            </div> -->
 
             <div class="post-feed">
                 <?php foreach ($posts as $post): ?>
                     <div class="post-card">
-
+                        <!-- Header -->
                         <div class="post-header">
                             <div class="user-info">
                                 <div class="username"><?= htmlspecialchars($post['username']) ?></div>
                                 <div class="post-time"><?= htmlspecialchars($post['post_date']) ?></div>
                                 <div class="post-module"><?= htmlspecialchars($post['module_name']) ?></div>
                             </div>
+                                <form action="admin-delete-post-code.php" method="post">
+                                    <input type="hidden" name="id" value="<?= $post['id'] ?>">
+                                    <button type="submit" name="btn_delete" class="delete">Delete</button>
+                                </form>
                         </div>
 
+                        <!-- Content -->
                         <div class="post-content">
                             <p><?= htmlspecialchars($post['post_text']) ?></p>
                             <?php if (!empty($post['post_image'])): ?>
-                                <img class="post-image" src="/forum_system/uploads/<?= htmlspecialchars($post['post_image']) ?>" alt="Post Image" />
+                                <img class="post-image" src="../../uploads/<?= htmlspecialchars($post['post_image']) ?>" alt="Post Image" />
                             <?php endif; ?>
                         </div>
 
+                        <!-- Meta & Actions -->
                         <div class="post-footer">
                             <div class="interaction-stats">
                                 👍 1.2K • 💬 42 bình luận 
@@ -65,4 +64,3 @@
         </div>
     </div>
 </div>
-

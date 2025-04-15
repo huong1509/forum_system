@@ -29,20 +29,22 @@ $BASE_URL = '/forum_system';
                             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="navbar-nav ms-auto mb-2 mb-lg-1">
                                 <li class="nav-item">
-                                    <a class="nav-link active" href="<?=$BASE_URL?>/index.php">Home</a>
+                                    <a class="nav-link active" href="<?=$BASE_URL?>/controllers/admin-crud/admin-posts-code.php">All Post</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link active" href="<?=$BASE_URL?>/controllers/crud/mypost-code.php">My Post</a>
+                                    <a class="nav-link active" href="<?=$BASE_URL?>/controllers/admin-crud/user-manage-code.php">User Management</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link active" href="<?=$BASE_URL?>/mail/send-contact-code.php">Contact Us</a>
+                                    <a class="nav-link active" href="<?=$BASE_URL?>/controllers/admin-crud/module-manage-code.php">Module Management</a>
                                 </li>
+
                                 <?php if(!isset($_SESSION['authenticated'])):?>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="<?=$BASE_URL?>/controllers/auth/signup-code.php">Sign Up</a>
+                                    <a class="nav-link active" href="<?=$BASE_URL?>/index.php">Home Page</a>
                                 </li>
+                                
                                 <li class="nav-item">
-                                    <a class="nav-link" href="<?=$BASE_URL?>/controllers/auth/signin-code.php">Sign In</a>
+                                    <a class="nav-link" href="<?=$BASE_URL?>/controllers/auth/admin-login-code.php">Admin Login</a>
                                 </li>
                                 <?php endif?>
 

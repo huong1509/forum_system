@@ -1,3 +1,6 @@
+
+
+
 .post-feed {
     max-width: 650px;
     margin: 30px auto;
@@ -42,7 +45,11 @@
     font-size: 13px;
     cursor: pointer;
     padding: 10px 6px;
+    border: none;
+    outline: none;
+    background: transparent;
 }
+
 
 .edit {
     color: #1216ff;
@@ -80,10 +87,10 @@
     color: #000000;
     margin-right: 15px;
     cursor: pointer;
-    font-size: 20px;
+    font-size: 15px;
     transition: color 0.3s;
 }
 
 .interaction-buttons button:hover {
-    color: #8d8d8d;
+    color: #818181;
 }

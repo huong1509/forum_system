@@ -6,15 +6,14 @@ include dirname(__DIR__, 2) . '/includes/config.php';
 
 ob_start();
 
-
-if(isset($_POST['btn_login'])){
+if(isset($_POST['btn_sign_in'])){
 
     $email = $_POST['email'];
     $password = $_POST['password'];
 
     if(!empty(trim($email)) && !empty(trim($password))) {
         include BASE_PATH . '/includes/DatabaseConnection.php';
-        include BASE_PATH . '//includes/DatabaseAccount.php';
+        include BASE_PATH . '/includes/DatabaseFunction.php';
 
         $account = selectMail($pdo, $email);
 
@@ -22,11 +21,19 @@ if(isset($_POST['btn_login'])){
             $_SESSION['authenticated'] = TRUE;
             $_SESSION['auth_account'] = [
                 'username' => $account['username'],
-                'role' => $account['role']
+                'role' => $account['role'],
+                'email' => $account['email']
                 ];
             
-            $_SESSION['status'] = 'Login successful!';
-            header('Location: /forum_system/index.php');
+            $_SESSION['status'] = 'Sign In successful!';
+
+            switch ($account['role']) {
+                case 'admin':
+                    header('Location: /forum_system/controllers/admin-crud/admin-posts-code.php');
+                    break;
+                default:
+                    header('Location: /forum_system/index.php');
+            }
             exit();
         } else {
             $_SESSION['status'] = 'Invalid email or password!';
@@ -36,7 +43,7 @@ if(isset($_POST['btn_login'])){
     }
 }
 
-include BASE_PATH . '/templates/auth-temp/login.html.php';
+include BASE_PATH . '/templates/auth-temp/signin.html.php';
 $output = ob_get_clean();
 include BASE_PATH . '/templates/layout.html.php';
 ?>

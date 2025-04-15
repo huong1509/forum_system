@@ -8,7 +8,7 @@ ob_start();
 
 if(isset($_POST['btn_password_reset'])){
     include BASE_PATH . '/includes/DatabaseConnection.php';
-    include BASE_PATH . '/includes/DatabaseAccount.php';
+    include BASE_PATH . '/includes/DatabaseFunction.php';
 
     $email = $_POST['email'];
 

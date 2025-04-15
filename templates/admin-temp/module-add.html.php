@@ -1,10 +1,3 @@
-<?php
-if(isset($_SESSION['authenticated'])){
-    $_SESSION['status'] = 'You are already login!';
-    header('Location: index.php');
-    exit(0);
-}
-?>
 
 <div class="py-5">
     <div class="container">
@@ -22,27 +15,18 @@ if(isset($_SESSION['authenticated'])){
                 ?>
                 <div class="card shadow">
                     <div class="card-header">
-                        <h5>Login</h5>
+                        <h5>Add Module</h5>
                     </div>
                     <div class="card-body">
                         <form action="" method="post">
-
                             <div class="form-group mb-3">
-                                <label for="name">Email: </label>
-                                <input type="email" name="email" class="form-control" placeholder="abc@gmail.com">
+                                <label for="module_name">Module Name: </label>
+                                <input type="text" name="module_name" class="form-control">
                             </div>
-
-                            <div class="form-group mb-3">
-                                <label for="name">Password: </label>
-                                <input type="password" name="password" class="form-control" placeholder="">
-                            </div>
-
+                            
                             <div class="form-group">
-                                <button type="submit" name="btn_login" class="btn btn-primary">Login Now</button>
-
-                                <a href="password-reset-code.php" class="float-end">Forgot your password?</a>
+                                <button type="submit" name="btn_add_module" class="btn btn-primary">Add New Module</button>
                             </div>
-
                         </form>
                     </div>
                 </div>
@@ -50,6 +34,4 @@ if(isset($_SESSION['authenticated'])){
         </div>
     </div>
 </div>
-
-
 

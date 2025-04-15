@@ -1,23 +1,42 @@
-<form action="" method="post">
-    <label for="post_text">Write your post here:</label><br><br>  
-    <textarea name="post_text" rows="3" cols="40"></textarea>
+<div class="py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+            <?php
+                    if (isset($_SESSION['status'])) {
+                        ?>
+                        <div class="alert alert-success">
+                            <h5><?php echo $_SESSION['status']; ?></h5>
+                        </div>
+                        <?php
+                        unset($_SESSION['status']);
+                    }
+                ?>
+            <form action="" method="post" enctype="multipart/form-data">
 
-    <select name="account">
-        <option value="">Select an username</option>
-        <?php foreach ($accounts as $account):?>
-            <option value="<?=htmlspecialchars($account['id'], ENT_QUOTES, 'UTF-8'); ?>">
-            <?=htmlspecialchars($account['username'], ENT_QUOTES, 'UTF-8'); ?>    
-            </option>
-            <?php endforeach;?>
-    </select> 
+                <div class="mb-3">
+                    <label for="post_text" class="form-label"><h5>Write your post here:</h5></label>
+                    <textarea name="post_text" class="form-control" id="exampleFormControlTextarea1" rows="5" cols="40"></textarea>
+                </div>
 
-    <select name="Module">
-        <option value="">Select an module </option>
-        <?php foreach ($modules as $module):?>
-            <option value="<?=htmlspecialchars($module['id'], ENT_QUOTES, 'UTF-8'); ?>">
-            <?=htmlspecialchars($module['module_name'], ENT_QUOTES, 'UTF-8'); ?>    
-            </option>
-            <?php endforeach;?>
-    </select> 
-    <br><input type="submit" name="submit" value="Add">
-</form>
+                <div class="mb-3">
+                    <label for="formFileMultiple" class="form-label"><h5>Add image here:</h5></label>
+                    <input name="fileToUpload" class="form-control" type="file" id="formFileMultiple" multiple>
+                </div>
+
+                <select name="module" class="form-select">
+                    <option selected>Select a module</option>
+                    <?php foreach ($modules as $module):?>
+                        <option value="<?=htmlspecialchars($module['id'], ENT_QUOTES, 'UTF-8'); ?>">
+                        <?=htmlspecialchars($module['module_name'], ENT_QUOTES, 'UTF-8'); ?>    
+                        </option>
+                        <?php endforeach;?>
+                </select><br>
+
+                <button type="submit" name="btn_add_post"  class="btn btn-primary">Add Post</button>
+            </form>
+
+            </div>
+        </div>
+    </div>
+</div>

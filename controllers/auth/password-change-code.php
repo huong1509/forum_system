@@ -7,7 +7,7 @@ ob_start();
 
 if(isset($_POST['btn_password_change'] )){
     include BASE_PATH . '/includes/DatabaseConnection.php';
-    include BASE_PATH . '/includes/DatabaseAccount.php';
+    include BASE_PATH . '/includes/DatabaseFunction.php';
     
     $email = $_POST['email'];
     $password = $_POST['password'];
@@ -15,7 +15,7 @@ if(isset($_POST['btn_password_change'] )){
 
     if (empty(trim($email)) || empty(trim($password)) || empty(trim($confirm_password))) {
         $_SESSION['status'] = 'All fields are mandatory!';
-    } if (!preg_match('/[A-Z]/', $password)) {
+    } elseif (!preg_match('/[A-Z]/', $password)) {
         $_SESSION['status'] = 'Password must contain at least one uppercase letter!';
     } elseif (!preg_match('/[a-z]/', $password)) {
         $_SESSION['status'] = 'Password must contain at least one lowercase letter!';
@@ -35,7 +35,7 @@ if(isset($_POST['btn_password_change'] )){
 
             if($run) {
                 $_SESSION['status'] = 'Update password complete!';
-                header('location: login-code.php');
+                header('location: signin-code.php');
                 exit();
             } else {
                 $_SESSION['status'] = 'Something went wrong!';

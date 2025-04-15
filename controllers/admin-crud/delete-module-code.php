@@ -1,5 +1,5 @@
 <?php
-$title = 'Delete Post';
+$title = 'Delete Module';
 session_start();
 
 include dirname(__DIR__, 2) . '/includes/config.php';
@@ -7,13 +7,13 @@ include dirname(__DIR__, 2) . '/includes/config.php';
 include BASE_PATH . '/includes/DatabaseConnection.php';
 include BASE_PATH . '/includes/DatabaseFunction.php';
 
-if(isset($_POST['btn_delete'])){
+if(isset($_POST['btn_delete_module'])){
 
-    $run = deletePost($pdo, $_POST['id']);
+    $run = deleteModule($pdo, $_POST['id']);
 
     if($run) {
-        $_SESSION['status'] = 'Delete post successful!';
-        header('location: mypost-code.php');
+        $_SESSION['status'] = 'Delete Module successful!';
+        header('location: module-manage-code.php');
         exit();
     } else {
         $_SESSION['status'] = 'Something went wrong!';
