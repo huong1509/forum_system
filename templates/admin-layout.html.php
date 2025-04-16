@@ -38,19 +38,9 @@ $BASE_URL = '/forum_system';
                                     <a class="nav-link active" href="<?=$BASE_URL?>/controllers/admin-crud/module-manage-code.php">Module Management</a>
                                 </li>
 
-                                <?php if(!isset($_SESSION['authenticated'])):?>
-                                <li class="nav-item">
-                                    <a class="nav-link active" href="<?=$BASE_URL?>/index.php">Home Page</a>
-                                </li>
-                                
-                                <li class="nav-item">
-                                    <a class="nav-link" href="<?=$BASE_URL?>/controllers/auth/admin-login-code.php">Admin Login</a>
-                                </li>
-                                <?php endif?>
-
                                 <?php if(isset($_SESSION['authenticated'])):?>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="<?=$BASE_URL?>/controllers/auth/signout-code.php">Log Out</a>
+                                    <a class="nav-link" href="<?=$BASE_URL?>/controllers/auth/signout-code.php">Sign Out</a>
                                 </li>
                                 <?php endif?>
 

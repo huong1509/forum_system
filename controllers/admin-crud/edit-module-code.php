@@ -15,6 +15,7 @@ if(isset($_POST['btn_edit_module'])){
         $_SESSION['status'] = 'All fields are mandatory!';
         header('location: module-manage-code.php');
         exit();
+
     } else {
         $check_module = checkModule($pdo, $_POST['new_module']);
 
@@ -43,4 +44,5 @@ if(isset($_POST['btn_edit_module'])){
 include BASE_PATH . '/templates/admin-temp/module-edit.html.php';
 $output = ob_get_clean();
 include BASE_PATH . '/templates/admin-layout.html.php';
+
 ?>

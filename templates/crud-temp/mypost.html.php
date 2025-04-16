@@ -49,17 +49,6 @@
                                     <img class="post-image" src="../../uploads/<?= htmlspecialchars($post['post_image']) ?>" alt="Post Image" />
                                 <?php endif; ?>
                             </div>
-
-                            <!-- Meta & Actions -->
-                            <div class="post-footer">
-                                <!-- <div class="interaction-stats">
-                                    👍 1.2K • 💬 42 bình luận • 🔁 16 chia sẻ
-                                </div> -->
-                                <div class="interaction-buttons">
-                                    <button>👍 Like</button>
-                                    <button>💬 Comment</button>
-                                </div>
-                            </div>
                         </div>
                     <?php endforeach; ?>
                 </div>

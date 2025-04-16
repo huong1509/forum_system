@@ -13,7 +13,7 @@
                         unset($_SESSION['status']);
                     }
                 ?>
-                <form action="" method="post">
+                <form action="" method="post" enctype="multipart/form-data">
                     <input type="hidden" name="post_id" value="<?=htmlspecialchars($post['id'], ENT_QUOTES, 'UTF-8'); ?>">
 
                     <div class="mb-3">
@@ -22,16 +22,25 @@
                     </div>
 
                     <div class="mb-3">
-                        <label for="formFileMultiple" class="form-label"><h5>Add image here:</h5></label>
-                        <input name="image" class="form-control" type="file" id="formFileMultiple" <?=htmlspecialchars($post['post_image'], ENT_QUOTES, 'UTF-8')?> multiple>
+                        <label for="formFileMultiple" class="form-label"><h5>Change image here:</h5></label>
+                        <input name="fileToUpload" class="form-control" type="file" id="formFileMultiple">
+                        <?php if (!empty($post['post_image'])): ?>
+                            <img class="post-image" src="../../uploads/<?= htmlspecialchars($post['post_image']) ?>" alt="Post Image" style="max-width:70%"/>
+                            <input type="hidden" name="post_image" value="<?= htmlspecialchars($post['post_image']) ?>">
+                        <?php endif; ?>
                     </div>
 
                     <select name="module" class="form-select">
-                        <?php foreach ($modules as $module):?>
-                            <option value="<?=htmlspecialchars($module['id'], ENT_QUOTES, 'UTF-8'); ?>"
-                                <?=$module['id'] == $post['module_name'] ? 'selected' : '' ?>>
-                                <?=htmlspecialchars($module['module_name'], ENT_QUOTES, 'UTF-8'); ?>    </option>
-                            <?php endforeach;?>
+                        <?php foreach ($modules as $module): ?>
+                            <?php if ($module['id'] == $post['module_name']): ?>
+                                <option value="<?= htmlspecialchars($module['id'], ENT_QUOTES, 'UTF-8'); ?>" selected><?= htmlspecialchars($module['module_name'], ENT_QUOTES, 'UTF-8'); ?></option>
+                                
+                            <?php else: ?>
+                                <option value="<?= htmlspecialchars($module['id'], ENT_QUOTES, 'UTF-8'); ?>">
+                                    <?= htmlspecialchars($module['module_name'], ENT_QUOTES, 'UTF-8'); ?>
+                                </option>
+                            <?php endif; ?>
+                        <?php endforeach; ?>
                     </select><br>
 
                     <button type="submit" name="btn_save"  class="btn btn-primary">Save Post</button>

@@ -44,17 +44,14 @@ function updatePassword($pdo, $email, $password) {
 
 function getPost($pdo, $postid) {
     $parameters = [':id'=> $postid];
-    $query = query($pdo, 'SELECT post.id, post.post_text, post.post_date, post.post_image, module.module_name FROM post 
+    $query = query($pdo, 'SELECT post.id, post.post_text, post.post_date, post.post_image, account.username,module.module_name FROM post 
+                            INNER JOIN account on account_id = account.id
                             INNER JOIN module on module_id = module.id
                             WHERE post.id =:id', $parameters);
     return $query->fetch();
 }
 
-function updatePost($pdo, $postid, $posttext, $postimage, $moduleid) {
-    $parameters = [':id'=> $postid, ':post_text' => $posttext, ':post_image' => $postimage, ':module_id' => $moduleid];
-    $query = query($pdo,'UPDATE post SET post_text = :post_text, post_image = :post_image , module_id = :module_id WHERE post.id = :id', $parameters);
-    return $query->rowCount() > 0;
-}
+
 
 function getAccount($pdo, $accountid) {
     $parameters = [':id'=> $accountid];
@@ -86,6 +83,12 @@ function updateModule($pdo, $moduleid, $module) {
     return $query->rowCount() > 0;
 }
 
+function getImage($pdo, $postid) {
+    $parameters = [':id' => $postid];
+    $query = query($pdo, "SELECT post_image FROM post WHERE id = :id", $parameters);
+    return $query->fetch();
+}
+
 function deletePost($pdo, $postid){
     $parameters = [':id' =>$postid];
     $query = query($pdo,"DELETE FROM post WHERE id = :id", $parameters);
@@ -113,6 +116,12 @@ function addPost($pdo, $posttext, $postimage, $moduleid, $email) {
     return $query->rowCount() > 0;
 }
 
+function updatePost($pdo, $postid, $posttext, $postimage, $moduleid) {
+    $parameters = [':id'=> $postid, ':post_text' => $posttext, ':post_image' => $postimage, ':module_id' => $moduleid];
+    $query = query($pdo,'UPDATE post SET post_text = :post_text, post_image = :post_image , module_id = :module_id WHERE post.id = :id', $parameters);
+    return $query->rowCount() > 0;
+}
+
 function allAccount($pdo){
     $authors = query($pdo, 'SELECT * FROM account');
     return $authors->fetchAll();
@@ -130,6 +139,26 @@ function allPosts($pdo) {
                         ORDER BY post.id DESC'
                 );
     return $query->fetchAll();
+}
+
+function allComments($pdo, $postid) {
+    $parameters = [':post_id' => $postid];
+    $query = query($pdo, 'SELECT comment.id, comment.comment_text, comment.comment_date, account.username, account.email FROM comment
+                        INNER JOIN account ON account_id = account.id
+                        INNER JOIN post on post_id = post.id
+                        WHERE post_id = :post_id
+                        ORDER BY comment.id DESC', $parameters
+                );
+    return $query->fetchAll();
+}
+
+function addComment($pdo, $commenttext, $postid, $email) {
+    $parameters = [':comment_text' => $commenttext,':post_id' => $postid, ':email' => $email];
+    $query = query($pdo,'INSERT INTO comment (comment_text, comment_date, post_id, account_id)
+            SELECT :comment_text, CURDATE(),:post_id, account.id
+            FROM account 
+            WHERE account.email = :email', $parameters);
+    return $query->rowCount() > 0;
 }
 
 function selectPosts($pdo, $email) {

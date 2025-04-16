@@ -19,8 +19,6 @@ if(isset($_POST['btn_sign_up'])){
         $_SESSION['status'] = 'All fields are mandatory!';
     } elseif (!preg_match('/[A-Z]/', $password)) {
         $_SESSION['status'] = 'Password must contain at least one uppercase letter!';
-    } elseif (!preg_match('/[a-z]/', $password)) {
-        $_SESSION['status'] = 'Password must contain at least one lowercase letter!';
     } elseif (!preg_match('/[0-9]/', $password)) {
         $_SESSION['status'] = 'Password must contain at least one number!';
     } elseif (!preg_match('/[\W_]/', $password)) {

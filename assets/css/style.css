@@ -1,13 +1,13 @@
 
 
 
-.post-feed {
+.post-feed{
     max-width: 650px;
     margin: 30px auto;
     font-family: Arial, sans-serif;
 }
 
-.post-card {
+.post-card{
     background: #f8f8f8;
     color: rgb(0, 0, 0);
     padding: 15px;
@@ -16,13 +16,13 @@
     box-shadow: 0 0 10px rgba(0,0,0,0.3);
 }
 
-.post-header {
+.post-header{
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 
-.user-info {
+.user-info{
     flex-grow: 1;
 }
 
@@ -31,7 +31,7 @@
     font-size: 25px;
 }
 
-.post-time {
+.post-time{
     font-size: 15px;
     color: #363636;
 }
@@ -58,10 +58,11 @@
     color: #c20909;
 }
 
-.post-content {
+.post-content{
     margin-top: 10px;
     font-size: 15px;
     line-height: 1.6;
+    width: 300px;
 }
 
 .post-image {
@@ -71,7 +72,7 @@
     object-fit: cover;
 }
 
-.post-footer {
+.post-footer{
     margin-top: 12px;
 }
 
@@ -94,3 +95,5 @@
 .interaction-buttons button:hover {
     color: #818181;
 }
+
+

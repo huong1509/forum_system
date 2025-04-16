@@ -9,6 +9,14 @@ include BASE_PATH . '/includes/DatabaseFunction.php';
 
 if(isset($_POST['btn_delete'])){
 
+    $image = getImage($pdo, $_POST['id']);
+    if(!empty($image['post_image'])){
+        $filePath = BASE_PATH . "/uploads/" . $image['post_image'];
+        if (file_exists($filePath)) {
+            unlink($filePath);
+        }
+    }
+
     $run = deletePost($pdo, $_POST['id']);
 
     if($run) {

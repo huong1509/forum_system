@@ -41,20 +41,21 @@
                         </div>
 
                         <div class="post-content">
-                            <p><?= htmlspecialchars($post['post_text']) ?></p>
+                            <pre><?= htmlspecialchars($post['post_text']) ?></pre>
+
                             <?php if (!empty($post['post_image'])): ?>
                                 <img class="post-image" src="/forum_system/uploads/<?= htmlspecialchars($post['post_image']) ?>" alt="Post Image" />
                             <?php endif; ?>
                         </div>
 
                         <div class="post-footer">
-                            <div class="interaction-stats">
+                            <!-- <div class="interaction-stats">
                                 👍 1.2K • 💬 42 bình luận 
-                            </div>
+                            </div> -->
                             <div class="interaction-buttons">
                                 <div class="d-grid gap-2 d-lg-block">
-                                    <button class="btn btn-light btn-sm" type="button">👍 Like</button>
-                                    <button class="btn btn-light btn-sm" type="button">💬 Comment</button>
+                                    <button class="btn btn-light btn-sm" type="button">0 Like</button>
+                                    <button class="btn btn-light btn-sm" type="button" onclick="window.location.href='controllers/crud/comment-code.php?id=<?=$post['id']?>'">💬 Comment</button>
                                 </div>
                             </div>
                         </div>
