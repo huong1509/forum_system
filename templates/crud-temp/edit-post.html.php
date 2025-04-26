@@ -17,8 +17,13 @@
                     <input type="hidden" name="post_id" value="<?=htmlspecialchars($post['id'], ENT_QUOTES, 'UTF-8'); ?>">
 
                     <div class="mb-3">
-                        <label for="post_text" class="form-label"><h4>Edit your joke here:</h4></label><br>
-                        <textarea name="post_text" class="form-control" id="post_text" rows="5" cols="40"><?=htmlspecialchars($post['post_text'], ENT_QUOTES, 'UTF-8')?></textarea>
+                        <label for="post_title" class="form-label"><h4>Edit post title:</h4></label><br>
+                        <input type="text" name="post_title" class="form-control" value="<?=htmlspecialchars($post['post_title'], ENT_QUOTES, 'UTF-8')?>"> 
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="post_text" class="form-label"><h4>Edit post content here:</h4></label><br>
+                        <textarea name="post_text" class="form-control" id="post_text" rows="10" cols="40"><?=htmlspecialchars($post['post_text'], ENT_QUOTES, 'UTF-8')?></textarea>
                     </div>
 
                     <div class="mb-3">
@@ -44,6 +49,7 @@
                     </select><br>
 
                     <button type="submit" name="btn_save"  class="btn btn-primary">Save Post</button>
+                    <button type="button" name="btn_cancel"  class="btn btn-secondary" onclick="window.location.href='mypost-code.php'">Cancel</button>
                 </form>
             </div>
         </div>

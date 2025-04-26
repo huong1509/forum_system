@@ -23,20 +23,33 @@ if(isset($_POST['btn_save'])){
     }
 
     if($new_image != '') {
-        if(file_exists("../../uploads/" . $new_image)){
+        if(file_exists(BASE_PATH . "/uploads/" . $new_image)){
             $filename = $new_image;
             $_SESSION['status'] = 'Image already exist!' . $filename;
             header('location: mypost-code.php');
             exit();
         }
+
+        $target_dir = BASE_PATH . "/uploads/";
+        $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+        
+        $allowed = ['jpg', 'jpeg', 'png', 'gif'];
+        $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+    
+        if (!in_array($imageFileType, $allowed)) {
+            $_SESSION['status'] = 'Only JPG, JPEG, PNG & GIF files are allowed!';
+            header('location: edit-post-code.php?id=' . $post['id']);
+            exit();
+        }
     } 
-        $run = updatePost($pdo,$_POST['post_id'] ,$_POST['post_text'], $update_image, $_POST['module']);
+
+        $run = updatePost($pdo, $_POST['post_id'] , $_POST['post_title'], $_POST['post_text'], $update_image, $_POST['module']);
 
         if($run) {
 
             if($new_image != ''){
                 include BASE_PATH . '/includes/uploadFile.php';
-                $image = "../../uploads/" . $old_image;
+                $image = BASE_PATH . "/uploads/" . $old_image;
                 if (file_exists($image)) {
                 unlink($image);
                 }

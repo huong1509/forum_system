@@ -9,6 +9,8 @@ ob_start();
 include BASE_PATH . '/includes/DatabaseConnection.php';
 include BASE_PATH . '/includes/DatabaseFunction.php';
 
+$account = getAccount($pdo, $_GET['id']);
+
 if(isset($_POST['btn_edit_user'])){
 
     if (empty(trim($_POST['new_username'])) || empty(trim($_POST['new_email'])) || empty(trim($_POST['new_role']))) {
@@ -17,7 +19,7 @@ if(isset($_POST['btn_edit_user'])){
         exit();
     } else {
         
-        $check_email = checkMail($pdo, $_POST['new_email']);
+        $check_email = checkMail($pdo, $_POST['new_email'], $_GET['id']);
 
         if ($check_email > 0) {
             $_SESSION['status'] = 'Email already exist!';
@@ -35,12 +37,12 @@ if(isset($_POST['btn_edit_user'])){
             $_SESSION['status'] = 'Something went wrong!';
             header('location: user-manage-code.php');
             exit();
+            }
         }
     }
-    }
-} else {
-    $account = getAccount($pdo, $_GET['id']);
 }
+
+
 
 include BASE_PATH . '/templates/admin-temp/user-edit.html.php';
 $output = ob_get_clean();

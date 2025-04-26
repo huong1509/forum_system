@@ -15,8 +15,13 @@
             <form action="" method="post" enctype="multipart/form-data">
 
                 <div class="mb-3">
-                    <label for="post_text" class="form-label"><h5>Write your post here:</h5></label>
-                    <textarea name="post_text" class="form-control" id="exampleFormControlTextarea1" rows="5" cols="40"></textarea>
+                    <label for="post_title" class="form-label"><h4>Post title:</h4></label><br>
+                    <input type="text" name="post_title" class="form-control" id="post_title">
+                </div>
+
+                <div class="mb-3">
+                    <label for="post_text" class="form-label"><h5>Post content:</h5></label>
+                    <textarea name="post_text" class="form-control" id="exampleFormControlTextarea1" rows="10" cols="40"></textarea>
                 </div>
 
                 <div class="mb-3">

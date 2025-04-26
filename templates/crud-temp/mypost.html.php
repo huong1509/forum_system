@@ -42,7 +42,8 @@
                                 </div>
 
                             <div class="post-content">
-                                <p><?= htmlspecialchars($post['post_text']) ?></p>
+                                <h4 style="color: blue;"><b><?= htmlspecialchars($post['post_title']) ?></b></h4>
+                                <?= nl2br(trim(htmlspecialchars($post['post_text']))) ?>
                                 <?php if (!empty($post['post_image'])): ?>
                                     <img class="post-image" src="../../uploads/<?= htmlspecialchars($post['post_image']) ?>" alt="Post Image" />
                                 <?php endif; ?>

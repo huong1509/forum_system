@@ -6,15 +6,14 @@ function query($pdo, $sql,$parameters = []){
     return $query;
 }
 
-// function totalPosts($pdo){
-//     $query = query($pdo,'SELECT COUNT(*)FROM post ');
-//     $row = $query->fetch();
-//     return $row[0];
-// }
-
-function checkMail($pdo, $email) {
-    $parameters = [':email' => $email];
-    $query = query($pdo,"SELECT COUNT(*) FROM account WHERE email = :email LIMIT 1", $parameters);
+function checkMail($pdo, $email, $accountid = null) {
+    if ($accountid) {
+        $parameters =[':email' => $email, ':id' => $accountid];
+        $query = query($pdo,"SELECT COUNT(*) FROM account WHERE email = :email AND id != :id LIMIT 1", $parameters);
+    } else {
+        $parameters = [':email' => $email];
+        $query = query($pdo,"SELECT COUNT(*) FROM account WHERE email = :email LIMIT 1", $parameters);
+    }
     return $query->fetchColumn();
 }
 
@@ -44,13 +43,12 @@ function updatePassword($pdo, $email, $password) {
 
 function getPost($pdo, $postid) {
     $parameters = [':id'=> $postid];
-    $query = query($pdo, 'SELECT post.id, post.post_text, post.post_date, post.post_image, account.username,module.module_name FROM post 
+    $query = query($pdo, 'SELECT post.id, post.post_title, post.post_text, post.post_date, post.post_image, account.username,module.module_name FROM post 
                             INNER JOIN account on account_id = account.id
                             INNER JOIN module on module_id = module.id
                             WHERE post.id =:id', $parameters);
     return $query->fetch();
 }
-
 
 
 function getAccount($pdo, $accountid) {
@@ -107,19 +105,19 @@ function deleteModule($pdo, $moduleid){
     return $query->rowCount() > 0;
 }
 
-function addPost($pdo, $posttext, $postimage, $moduleid, $email) {
-    $parameters = [':post_text' => $posttext,':post_image' => $postimage ,':module_id' => $moduleid, ':email' => $email];
-    $query = query($pdo,'INSERT INTO post (post_text, post_date, post_image, account_id, module_id)
-            SELECT :post_text, CURDATE(),:post_image, account.id, :module_id
+function addPost($pdo, $posttitle, $posttext, $postimage, $moduleid, $email) {
+    $parameters = [':post_title' => $posttitle ,':post_text' => $posttext,':post_image' => $postimage ,':module_id' => $moduleid, ':email' => $email];
+    $query = query($pdo,'INSERT INTO post (post_title, post_text, post_date, post_image, account_id, module_id)
+            SELECT :post_title, :post_text, CURDATE(),:post_image, account.id, :module_id
             FROM account 
             WHERE account.email = :email', $parameters);
     return $query->rowCount() > 0;
 }
 
-function updatePost($pdo, $postid, $posttext, $postimage, $moduleid) {
-    $parameters = [':id'=> $postid, ':post_text' => $posttext, ':post_image' => $postimage, ':module_id' => $moduleid];
-    $query = query($pdo,'UPDATE post SET post_text = :post_text, post_image = :post_image , module_id = :module_id WHERE post.id = :id', $parameters);
-    return $query->rowCount() > 0;
+function updatePost($pdo, $postid, $posttitle, $posttext, $postimage, $moduleid) {
+    $parameters = [':id'=> $postid, ':post_title' => $posttitle ,':post_text' => $posttext, ':post_image' => $postimage, ':module_id' => $moduleid];
+    $query = query($pdo,'UPDATE post SET post_title = :post_title, post_text = :post_text, post_image = :post_image , module_id = :module_id WHERE post.id = :id', $parameters);
+    return true;
 }
 
 function allAccount($pdo){
@@ -133,7 +131,7 @@ function allModule($pdo){
 }
 
 function allPosts($pdo) {
-    $query = query($pdo, 'SELECT post.id, post.post_text, post.post_date, post.post_image, account.username, module.module_name FROM post
+    $query = query($pdo, 'SELECT post.id, post.post_title, post.post_text, post.post_date, post.post_image, account.username, module.module_name FROM post
                         INNER JOIN account ON account_id = account.id
                         INNER JOIN module on module_id = module.id
                         ORDER BY post.id DESC'
@@ -163,7 +161,7 @@ function addComment($pdo, $commenttext, $postid, $email) {
 
 function selectPosts($pdo, $email) {
     $parameters = [':email' => $email];
-    $query = query($pdo, 'SELECT post.id, post.post_text, post.post_date, post.post_image, account.username, module.module_name FROM post 
+    $query = query($pdo, 'SELECT post.id, post.post_title, post.post_text, post.post_date, post.post_image, account.username, module.module_name FROM post 
                         INNER JOIN account ON account_id = account.id
                         INNER JOIN module on module_id = module.id
                         WHERE email = :email

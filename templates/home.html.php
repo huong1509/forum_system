@@ -6,7 +6,7 @@
 <div class="py-5">
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-6">
+            <div class="col-md-8">
             <?php
                 if (isset($_SESSION['status'])) {
                     ?>
@@ -18,7 +18,7 @@
                 }
             ?>
             <div class="card">
-                <div class="card-header">
+                <div class="card-header text-center">
                     <h3>Welcome, This is home page</h3>
                 </div>
             </div>
@@ -41,7 +41,8 @@
                         </div>
 
                         <div class="post-content">
-                            <p><?= htmlspecialchars($post['post_text']) ?></p>
+                            <h4 style="color: blue;"><b><?= htmlspecialchars($post['post_title']) ?></b></h4>
+                            <?= nl2br(trim(htmlspecialchars($post['post_text']))) ?>
 
                             <?php if (!empty($post['post_image'])): ?>
                                 <img class="post-image" src="/forum_system/uploads/<?= htmlspecialchars($post['post_image']) ?>" alt="Post Image" />

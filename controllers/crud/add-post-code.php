@@ -18,13 +18,25 @@ include BASE_PATH . '/includes/DatabaseFunction.php';
 $modules = allModule($pdo);
 
 if(isset($_POST['btn_add_post'])){
+
+    $target_dir = BASE_PATH . "/uploads/";
+        $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+        
+        $allowed = ['jpg', 'jpeg', 'png', 'gif'];
+        $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+    
+        if (!in_array($imageFileType, $allowed)) {
+            $_SESSION['status'] = 'Only JPG, JPEG, PNG & GIF files are allowed!';
+            header('location: add-post-code.php');
+            exit();
+        }
     
     if (empty($_POST['post_text']) || empty($_POST['module']) || $_POST['module'] === "Select a module") {
         $_SESSION['status'] = 'All fields are mandatory!';
         header('location: add-post-code.php');
         exit();
     } else {
-        $run = addPost($pdo, $_POST['post_text'], $_FILES['fileToUpload']['name'], $_POST['module'], $_SESSION['auth_account']['email']);
+        $run = addPost($pdo, $_POST['post_title'], $_POST['post_text'], $_FILES['fileToUpload']['name'], $_POST['module'], $_SESSION['auth_account']['email']);
         include BASE_PATH . '/includes/uploadFile.php';
     
         if($run) {
