@@ -2,6 +2,7 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-20">
+                <!-- Check if there is a status message in the session and display it -->
                 <?php
                     if (isset($_SESSION['status'])) {
                         ?>
@@ -15,7 +16,7 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="mb-3">
-                            <button class="btn btn-success border shadow-sm" onclick="window.location.href='add-module-code.php'">Add Module</button>
+                            <button class="btn btn-success border shadow-sm" onclick="window.location.href='add-module-code.php'">Add Module</button> <!-- link to add module page -->
                         </div>
 
                         <table class="table table-bordered table-hover">
@@ -35,12 +36,12 @@
                                     <td> <?= htmlspecialchars($module['id']) ?> </td>
                                     <td> <?= htmlspecialchars($module['module_name']) ?> </td>
 
-                                    <td><button class="btn btn-info btn-sm" onclick="window.location.href='edit-module-code.php?id=<?=$module['id']?>?'">Edit</button></td>
+                                    <td><button class="btn btn-info btn-sm" onclick="window.location.href='edit-module-code.php?id=<?=$module['id']?>?'">Edit</button></td> <!-- link to edit module page -->
 
                                     <td>
                                         <form action="delete-module-code.php" method="post">
                                             <input type="hidden" name="id" value="<?= $module['id'] ?>">
-                                            <button type="submit" name="btn_delete_module" class="btn btn-danger btn-sm">Delete</button>
+                                            <button type="submit" name="btn_delete_module" class="btn btn-danger btn-sm">Delete</button> <!-- delete module button -->
                                         </form>
                                     </td>
                                 </blockquote>

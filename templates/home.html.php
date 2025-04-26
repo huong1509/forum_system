@@ -7,8 +7,9 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
+                <!-- Check if there is a status message in the session and display it -->
             <?php
-                if (isset($_SESSION['status'])) {
+                if (isset($_SESSION['status'])) { 
                     ?>
                     <div class="alert alert-success">
                         <h5><?php echo $_SESSION['status']; ?></h5>
@@ -27,33 +28,35 @@
             <button class="btn btn-light border border-lighgrey rounded-pill shadow-sm" onclick="window.location.href='controllers/crud/add-post-code.php'">Write your post here....</button>
             </div>
 
-
-            <div class="post-feed">
-                <?php foreach ($posts as $post): ?>
+                
+            <div class="post-feed"> <!-- Section for displaying posts -->
+                <?php foreach ($posts as $post): ?>  <!-- Loop through each post and display its content -->
                     <div class="post-card">
 
-                        <div class="post-header">
+                        <div class="post-header"> 
                             <div class="user-info">
-                                <div class="username"><?= htmlspecialchars($post['username']) ?></div>
-                                <div class="post-time"><?= htmlspecialchars($post['post_date']) ?></div>
-                                <div class="post-module"><?= htmlspecialchars($post['module_name']) ?></div>
+                                <!-- Display username, post time, and module -->
+                                <div class="username"><?= htmlspecialchars($post['username']) ?></div> 
+                                <div class="post-time"><?= htmlspecialchars($post['post_date']) ?></div> 
+                                <div class="post-module"><?= htmlspecialchars($post['module_name']) ?></div> 
                             </div>
                         </div>
 
-                        <div class="post-content">
-                            <h4 style="color: blue;"><b><?= htmlspecialchars($post['post_title']) ?></b></h4>
-                            <?= nl2br(trim(htmlspecialchars($post['post_text']))) ?>
+                        <div class="post-content">  
+                            <!-- Display pót title, post text and post image -->
+                            <h4 style="color: blue;"><b><?= htmlspecialchars($post['post_title']) ?></b></h4> 
+                            <?= nl2br(trim(htmlspecialchars($post['post_text']))) ?> 
 
-                            <?php if (!empty($post['post_image'])): ?>
-                                <img class="post-image" src="/forum_system/uploads/<?= htmlspecialchars($post['post_image']) ?>" alt="Post Image" />
+                            <?php if (!empty($post['post_image'])): ?>  <!-- Display the post image if it exists -->
+                                <img class="post-image" src="/forum_system/uploads/<?= htmlspecialchars($post['post_image']) ?>" alt="Post Image" /> 
                             <?php endif; ?>
                         </div>
 
-                        <div class="post-footer">
+                        <div class="post-footer">  
                             <div class="interaction-buttons">
                                 <div class="d-grid gap-2 d-lg-block">
-                                    <button class="btn btn-light btn-sm" type="button">0 Like</button>
-                                    <button class="btn btn-light btn-sm" type="button" onclick="window.location.href='controllers/crud/comment-code.php?id=<?=$post['id']?>'">💬 Comment</button>
+                                    <button class="btn btn-light btn-sm" type="button">0 Like</button> <!-- Like button -->
+                                    <button class="btn btn-light btn-sm" type="button" onclick="window.location.href='controllers/crud/comment-code.php?id=<?=$post['id']?>'">💬 Comment</button> <!-- Comment button -->
                                 </div>
                             </div>
                         </div>

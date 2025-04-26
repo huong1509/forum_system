@@ -7,6 +7,7 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
+                <!-- Check if there is a status message in the session and display it -->
             <?php
                 if (isset($_SESSION['status'])) {
                     ?>
@@ -42,9 +43,9 @@
 
                 <div class="comment">
                     <div class="mb-3">
-                        <form action="" method="post">
-                            <textarea name="comment_text" class="form-control" placeholder="Write your comment here..." id="comment_text" rows="5" cols="40"></textarea><br>
-                            <button type="submit" name="btn_comment" class="btn btn-primary">Comment</button>
+                        <form action="" method="post"> <!-- Comment form -->
+                            <textarea name="comment_text" class="form-control" placeholder="Write your comment here..." id="comment_text" rows="5" cols="40"></textarea><br> <!-- Comment input -->
+                            <button type="submit" name="btn_comment" class="btn btn-primary">Comment</button> <!-- Comment button -->
                         </form>
                     </div>
                 </div>
@@ -52,13 +53,13 @@
                         <?php foreach ($comments as $comment): ?>
                         <div class="comment-card">
                             <div class="comment-header">
-                                <div class="comment-info">
+                                <div class="comment-info"> <!-- Display username and comment date -->
                                     <div class="username"><?= htmlspecialchars($comment['username']) ?></div>
                                     <div class="comment-time"><?= htmlspecialchars($comment['comment_date']) ?></div>
                                 </div>
                             </div>
 
-                            <div class="comment-content">
+                            <div class="comment-content"> <!-- Display comment text -->
                                 <?= nl2br(trim(htmlspecialchars($comment['comment_text']))) ?>
                             </div>
                         </div>

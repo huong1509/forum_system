@@ -1,4 +1,5 @@
 <?php
+// Declare the BASE_URL variable to use as the base for all links
 $BASE_URL = '/forum_system';
 
 ?>
@@ -8,8 +9,8 @@ $BASE_URL = '/forum_system';
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title><?php if(isset($title)) { echo"$title"; }?></title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title><?php if(isset($title)) { echo"$title"; }?></title> <!-- Display the page title if $title is set -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet"> <!-- Load Bootstrap 5 CSS -->
     
 </head>
 
@@ -28,26 +29,26 @@ $BASE_URL = '/forum_system';
                             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="navbar-nav ms-auto mb-2 mb-lg-1">
                                 <li class="nav-item">
-                                    <a class="nav-link active" href="<?=$BASE_URL?>/index.php">Home</a>
+                                    <a class="nav-link active" href="<?=$BASE_URL?>/index.php">Home</a> <!-- Link to Home page -->
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link active" href="<?=$BASE_URL?>/controllers/crud/mypost-code.php">My Post</a>
+                                    <a class="nav-link active" href="<?=$BASE_URL?>/controllers/crud/mypost-code.php">My Post</a> <!-- Link to My Post page -->
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link active" href="<?=$BASE_URL?>/mail/send-contact-code.php">Contact Us</a>
+                                    <a class="nav-link active" href="<?=$BASE_URL?>/mail/send-contact-code.php">Contact Us</a> <!-- Link to Contact Us page -->
                                 </li>
-                                <?php if(!isset($_SESSION['authenticated'])):?>
+                                <?php if(!isset($_SESSION['authenticated'])):?> <!-- If user is NOT authenticated, show Sign Up and Sign In links -->
                                 <li class="nav-item">
-                                    <a class="nav-link" href="<?=$BASE_URL?>/controllers/auth/signup-code.php">Sign Up</a>
+                                    <a class="nav-link" href="<?=$BASE_URL?>/controllers/auth/signup-code.php">Sign Up</a> <!-- Link to Sign Up page -->
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="<?=$BASE_URL?>/controllers/auth/signin-code.php">Sign In</a>
+                                    <a class="nav-link" href="<?=$BASE_URL?>/controllers/auth/signin-code.php">Sign In</a> <!-- Link to Sign In page -->
                                 </li>
                                 <?php endif?>
 
-                                <?php if(isset($_SESSION['authenticated'])):?>
+                                <?php if(isset($_SESSION['authenticated'])):?> <!-- If user is authenticated, show Log Out link -->
                                 <li class="nav-item">
-                                    <a class="nav-link" href="<?=$BASE_URL?>/controllers/auth/signout-code.php">Log Out</a>
+                                    <a class="nav-link" href="<?=$BASE_URL?>/controllers/auth/signout-code.php">Log Out</a> <!-- Link to Sign In page -->
                                 </li>
                                 <?php endif?>
 
@@ -60,8 +61,8 @@ $BASE_URL = '/forum_system';
         </div>
     </div>
 
-<main><?=$output?></main>
+<main><?=$output?></main>  <!-- Main content area where $output will be displayed -->
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>   <!-- Load Bootstrap 5 JavaScript bundle -->
 </body>
 </html>

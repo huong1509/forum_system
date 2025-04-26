@@ -1,32 +1,37 @@
 <?php
-$title = 'Sign in';
-session_start();
 
-include dirname(__DIR__, 2) . '/includes/config.php';
+$title = 'Sign in'; // Page title
+session_start(); // Start session
 
-ob_start();
+include dirname(__DIR__, 2) . '/includes/config.php'; // Include config
 
+ob_start(); // Start output buffering
+
+// Check if sign-in button is pressed
 if(isset($_POST['btn_sign_in'])){
 
-    $email = $_POST['email'];
-    $password = $_POST['password'];
+    $email = $_POST['email']; // Get email input
+    $password = $_POST['password']; // Get password input
 
+    // Check if email and password are not empty
     if(!empty(trim($email)) && !empty(trim($password))) {
-        include BASE_PATH . '/includes/DatabaseConnection.php';
-        include BASE_PATH . '/includes/DatabaseFunction.php';
+        include BASE_PATH . '/includes/DatabaseConnection.php'; // Include DB connection
+        include BASE_PATH . '/includes/DatabaseFunction.php'; // Include DB functions
 
-        $account = selectMail($pdo, $email);
+        $account = selectMail($pdo, $email); // Get account details
 
+        // Verify password with stored hash
         if (password_verify($password, $account["password_hash"])) {
-            $_SESSION['authenticated'] = TRUE;
-            $_SESSION['auth_account'] = [
+            $_SESSION['authenticated'] = TRUE; // Set authentication flag
+            $_SESSION['auth_account'] = [ // Store account data in session
                 'username' => $account['username'],
                 'role' => $account['role'],
                 'email' => $account['email']
-                ];
-            
-            $_SESSION['status'] = 'Sign In successful!';
+            ];
 
+            $_SESSION['status'] = 'Sign In successful!'; // Set success message
+
+            // Redirect based on user role
             switch ($account['role']) {
                 case 'admin':
                     header('Location: /forum_system/controllers/admin-crud/admin-posts-code.php');
@@ -34,16 +39,17 @@ if(isset($_POST['btn_sign_in'])){
                 default:
                     header('Location: /forum_system/index.php');
             }
-            exit();
+            exit(); // Exit after redirect
         } else {
-            $_SESSION['status'] = 'Invalid email or password!';
+            $_SESSION['status'] = 'Invalid email or password!'; // Invalid credentials
         }
-    } else{
-    $_SESSION['status'] = 'All field are mandetory!';
+    } else {
+        $_SESSION['status'] = 'All fields are mandatory!'; // Missing input
     }
 }
 
-include BASE_PATH . '/templates/auth-temp/signin.html.php';
-$output = ob_get_clean();
-include BASE_PATH . '/templates/layout.html.php';
+include BASE_PATH . '/templates/auth-temp/signin.html.php'; // Include sign-in template
+$output = ob_get_clean(); // Clean output buffer
+include BASE_PATH . '/templates/layout.html.php'; // Include layout template
+
 ?>

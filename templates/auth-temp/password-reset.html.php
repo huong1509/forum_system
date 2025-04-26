@@ -3,6 +3,7 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-6">
+                <!-- Check if there is a status message in the session and display it -->
                 <?php
                     if (isset($_SESSION['status'])) {
                         ?>
@@ -18,14 +19,14 @@
                         <h5>Reset Password</h5>
                     </div>
                     <div class="card-body">
-                        <form action="" method="post">
+                        <form action="" method="post"> <!-- reset password form -->
                             <div class="form-group mb-3">
                                 <label for="email">Email address: </label>
-                                <input type="text" name="email" class="form-control" placeholder="Enter your email address">
+                                <input type="text" name="email" class="form-control" placeholder="Enter your email address"> <!-- email input-->
                             </div>
 
                             <div class="form-group">
-                                <button type="submit" name="btn_password_reset" class="btn btn-primary">Reset password</button>
+                                <button type="submit" name="btn_password_reset" class="btn btn-primary">Reset password</button> <!-- link to change password page -->
                             </div>
                         </form>
                     </div>

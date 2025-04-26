@@ -1,19 +1,16 @@
 <?php 
-$title = "Home Page";
-session_start();
+$title = "Home Page"; // Set page title
+session_start(); // Start session
 
+include ('includes/config.php'); // Load config
+include ('includes/DatabaseConnection.php'); // Connect to database
+include ('includes/DatabaseFunction.php'); // Load database functions
 
-include ('includes/config.php');
+$posts = allPosts($pdo); // Get all posts
 
-include ('includes/DatabaseConnection.php') ;
-include ('includes/DatabaseFunction.php') ;
+ob_start(); // Start output buffering
+include ('templates/home.html.php'); // Load home template
+$output = ob_get_clean(); // Store buffered content
 
-$posts = allPosts($pdo);
-
-ob_start();
-
-include ('templates/home.html.php');
-$output = ob_get_clean();
-include ('templates/layout.html.php' );
-
+include ('templates/layout.html.php'); // Load layout
 ?>

@@ -28,18 +28,18 @@ $BASE_URL = '/forum_system';
                             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="navbar-nav ms-auto mb-2 mb-lg-1">
                                 <li class="nav-item">
-                                    <a class="nav-link active" href="<?=$BASE_URL?>/controllers/admin-crud/admin-posts-code.php">All Post</a>
+                                    <a class="nav-link active" href="<?=$BASE_URL?>/controllers/admin-crud/admin-posts-code.php">All Post</a> <!-- Link to All Post page -->
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link active" href="<?=$BASE_URL?>/controllers/admin-crud/user-manage-code.php">User Management</a>
+                                    <a class="nav-link active" href="<?=$BASE_URL?>/controllers/admin-crud/user-manage-code.php">User Management</a> <!-- Link to User Management page -->
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link active" href="<?=$BASE_URL?>/controllers/admin-crud/module-manage-code.php">Module Management</a>
+                                    <a class="nav-link active" href="<?=$BASE_URL?>/controllers/admin-crud/module-manage-code.php">Module Management</a> <!-- Link to Module Management page -->
                                 </li>
 
                                 <?php if(isset($_SESSION['authenticated'])):?>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="<?=$BASE_URL?>/controllers/auth/signout-code.php">Sign Out</a>
+                                    <a class="nav-link" href="<?=$BASE_URL?>/controllers/auth/signout-code.php">Sign Out</a> <!-- Link to Sign In page -->
                                 </li>
                                 <?php endif?>
 

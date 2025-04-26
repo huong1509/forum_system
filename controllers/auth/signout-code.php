@@ -1,11 +1,11 @@
 <?php
 
-session_start();
-unset($_SESSION['authenticated']);
-unset($_SESSION['auth_account']);
+session_start(); // Start session
+unset($_SESSION['authenticated']); // Remove authentication flag
+unset($_SESSION['auth_account']); // Remove user account data
 
-$_SESSION['status'] = 'Sign out successfully!';
+$_SESSION['status'] = 'Sign out successfully!'; // Set sign out message
 
-header('location: signin-code.php');
-exit();
+header('location: signin-code.php'); // Redirect to sign-in page
+exit(); // Exit script
 ?>

@@ -6,6 +6,7 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-10">
+                <!-- Check if there is a status message in the session and display it -->
             <?php
                 if (isset($_SESSION['status'])) {
                     ?>
@@ -22,18 +23,18 @@
                     <div class="post-card">
                         
                         <div class="post-header">
-                            <div class="user-info">
+                            <div class="user-info">  <!-- Display username, post date, and module name -->
                                 <div class="username"><?= htmlspecialchars($post['username']) ?></div>
                                 <div class="post-time"><?= htmlspecialchars($post['post_date']) ?></div>
                                 <div class="post-module"><?= htmlspecialchars($post['module_name']) ?></div>
                             </div>
-                                <form action="admin-delete-post-code.php" method="post">
+                                <form action="admin-delete-post-code.php" method="post"> <!-- Admin delete post form -->
                                     <input type="hidden" name="id" value="<?= $post['id'] ?>">
                                     <button type="submit" name="btn_delete" class="delete">Delete</button>
                                 </form>
                         </div>
 
-                        <div class="post-content">
+                        <div class="post-content"> <!-- Display post title, post date, and post image -->
                             <h5 style="color: blue;"><b><?= htmlspecialchars($post['post_title']) ?></b></h5>
                             <?= nl2br(trim(htmlspecialchars($post['post_text']))) ?>
                             <?php if (!empty($post['post_image'])): ?>
@@ -43,9 +44,9 @@
 
                         <div class="post-footer">
                             <div class="interaction-buttons">
-                                <div class="d-grid gap-2 d-lg-block">
-                                    <button class="btn btn-light btn-sm" type="button">0 Like</button>
-                                    <button class="btn btn-light btn-sm" type="button" onclick="window.location.href='admin-comment-code.php?id=<?=$post['id']?>'">💬 Comment</button>
+                                <div class="d-grid gap-2 d-lg-block"> 
+                                    <button class="btn btn-light btn-sm" type="button">0 Like</button> <!-- Like button -->
+                                    <button class="btn btn-light btn-sm" type="button" onclick="window.location.href='admin-comment-code.php?id=<?=$post['id']?>'">💬 Comment</button> <!-- Comment -->
                                 </div>
                             </div>
                         </div>

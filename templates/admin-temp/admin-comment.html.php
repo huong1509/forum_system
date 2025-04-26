@@ -7,6 +7,7 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
+                <!-- Check if there is a status message in the session and display it -->
             <?php
                 if (isset($_SESSION['status'])) {
                     ?>

@@ -2,6 +2,7 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-20">
+                <!-- Check if there is a status message in the session and display it -->
                 <?php
                     if (isset($_SESSION['status'])) {
                         ?>
@@ -15,11 +16,11 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="mb-3">
-                            <button class="btn btn-success border shadow-sm" onclick="window.location.href='add-user-code.php'">Add User</button>
+                            <button class="btn btn-success border shadow-sm" onclick="window.location.href='add-user-code.php'">Add User</button> <!-- link to add user page -->
                         </div>
                         <table class="table table-bordered table-hover">
                             <thead>
-                                <tr>
+                                <tr> 
                                     <th> <?= htmlspecialchars('ID') ?> </th>
                                     <th> <?= htmlspecialchars('Username') ?> </th>
                                     <th> <?= htmlspecialchars('Email') ?> </th>
@@ -38,12 +39,12 @@
                                     <td> <?= htmlspecialchars($account['email']) ?> </td>
                                     <td> <?= htmlspecialchars($account['role']) ?> </td>
         
-                                    <td><button class="btn btn-info btn-sm" onclick="window.location.href='edit-user-code.php?id=<?=$account['id']?>'">Edit</button></td>
+                                    <td><button class="btn btn-info btn-sm" onclick="window.location.href='edit-user-code.php?id=<?=$account['id']?>'">Edit</button></td> <!-- link to edit user page -->
 
                                     <td>
                                         <form action="delete-user-code.php" method="post">
                                             <input type="hidden" name="id" value="<?= $account['id'] ?>">
-                                            <button type="submit" name="btn_delete_user" class="btn btn-danger btn-sm">Delete</button>
+                                            <button type="submit" name="btn_delete_user" class="btn btn-danger btn-sm">Delete</button> <!-- delete user button -->
                                         </form>
                                     </td>
                                 </blockquote>
