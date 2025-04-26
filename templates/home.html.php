@@ -1,6 +1,6 @@
 
 <head>
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/style1.css">
 </head>
 
 <div class="py-5">
@@ -41,7 +41,7 @@
                         </div>
 
                         <div class="post-content">
-                            <pre><?= htmlspecialchars($post['post_text']) ?></pre>
+                            <p><?= htmlspecialchars($post['post_text']) ?></p>
 
                             <?php if (!empty($post['post_image'])): ?>
                                 <img class="post-image" src="/forum_system/uploads/<?= htmlspecialchars($post['post_image']) ?>" alt="Post Image" />
@@ -49,9 +49,6 @@
                         </div>
 
                         <div class="post-footer">
-                            <!-- <div class="interaction-stats">
-                                👍 1.2K • 💬 42 bình luận 
-                            </div> -->
                             <div class="interaction-buttons">
                                 <div class="d-grid gap-2 d-lg-block">
                                     <button class="btn btn-light btn-sm" type="button">0 Like</button>

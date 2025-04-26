@@ -14,10 +14,11 @@
                     }
                 ?>
                 <form action="" method="post">
-                    <input type="text" name="module_id" value="<?=htmlspecialchars($module['id'], ENT_QUOTES, 'UTF-8'); ?>">
+                    <input type="hidden" name="module_id" value="<?=htmlspecialchars($module['id'], ENT_QUOTES, 'UTF-8'); ?>">
+
 
                     <div class="mb-3">
-                        <label for="new_module" class="form-label">Edit Module</label>
+                        <label for="new_module" class="form-label">Edit Module Name</label>
                         <input type="text" name="new_module" class="form-control" id="module" value= "<?=htmlspecialchars($module['module_name'], ENT_QUOTES, 'UTF-8')?>">
                     </div>
 

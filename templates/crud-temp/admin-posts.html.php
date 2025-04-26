@@ -1,6 +1,6 @@
 
 <head>
-    <link rel="stylesheet" href="../../assets/css/style.css">
+    <link rel="stylesheet" href="../../assets/css/style1.css">
 </head>
 <div class="py-5">
     <div class="container">

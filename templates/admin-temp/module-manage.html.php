@@ -35,7 +35,7 @@
                                     <td> <?= htmlspecialchars($module['id']) ?> </td>
                                     <td> <?= htmlspecialchars($module['module_name']) ?> </td>
 
-                                    <td><button class="btn btn-info btn-sm" onclick="window.location.href='edit-module-code.php?id=<?=$module['id']?>'">Edit</button></td>
+                                    <td><button class="btn btn-info btn-sm" onclick="window.location.href='edit-module-code.php?id=<?=$module['id']?>?'">Edit</button></td>
 
                                     <td>
                                         <form action="delete-module-code.php" method="post">

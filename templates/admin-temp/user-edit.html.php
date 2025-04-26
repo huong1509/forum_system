@@ -17,17 +17,17 @@
                     <input type="hidden" name="account_id" value="<?=htmlspecialchars($account['id'], ENT_QUOTES, 'UTF-8'); ?>">
 
                     <div class="mb-3">
-                        <label for="new_username" class="form-label">Username</label>
+                        <label for="new_username" class="form-label">Edit Username</label>
                         <input type="text" name="new_username" class="form-control" id="username" value= "<?=htmlspecialchars($account['username'], ENT_QUOTES, 'UTF-8')?>">
                     </div>
 
                     <div class="mb-3">
-                        <label for="new_email" class="form-label">Email Address</label>
+                        <label for="new_email" class="form-label">Edit Email Address</label>
                         <input type="email" name="new_email" class="form-control" id="email" value = "<?=htmlspecialchars($account['email'], ENT_QUOTES, 'UTF-8')?>">
                     </div>
 
                     <div class="mb-3">
-                        <label for="new_role" class="form-label">Role</label>
+                        <label for="new_role" class="form-label">Edit Role</label>
                         <input type="text" name="new_role" class="form-control" id="email" value = "<?=htmlspecialchars($account['role'], ENT_QUOTES, 'UTF-8')?>">
                     </div>
 

@@ -1,5 +1,5 @@
 <head>
-    <link rel="stylesheet" href="../../assets/css/style.css">
+    <link rel="stylesheet" href="../../assets/css/style1.css">
 </head>
 
 <div class="py-5">
@@ -27,7 +27,6 @@
                 <div class="post-feed">
                     <?php foreach ($posts as $post): ?>
                         <div class="post-card">
-                            <!-- Header -->
                             <div class="post-header">
                                 <div class="user-info">
                                     <div class="username"><?= htmlspecialchars($post['username']) ?></div>
@@ -42,7 +41,6 @@
                                     </form>
                                 </div>
 
-                            <!-- Content -->
                             <div class="post-content">
                                 <p><?= htmlspecialchars($post['post_text']) ?></p>
                                 <?php if (!empty($post['post_image'])): ?>

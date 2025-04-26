@@ -14,7 +14,6 @@ $BASE_URL = '/forum_system';
 </head>
 
 <body>
-
     <div class="bg-dark">
         <div class="container">
             <div class="row">
