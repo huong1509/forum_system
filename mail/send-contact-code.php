@@ -40,7 +40,7 @@ ob_start(); // Start output buffering to capture any output generated
                 $mail->SMTPAuth = true;
     
                 $mail->Username = 'huongnsgch230101@fpt.edu.vn';
-                $mail->Password = 'apmexvqtgjqjhxxs'; 
+                $mail->Password = 'sutntyrwgfgyomzh'; 
     
                 $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS; 
                 $mail->Port = 587; 
