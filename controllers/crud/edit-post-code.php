@@ -37,7 +37,7 @@ if(isset($_POST['btn_save'])){ // If save button clicked
         $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
     
         if (!in_array($imageFileType, $allowed)) {
-            $_SESSION['status'] = 'Only image files allowed!';
+            $_SESSION['status'] = 'Only JPG, JPEG, PNG & GIF files are allowed!';
             header('location: edit-post-code.php?id=' . $post['id']);
             exit();
         }

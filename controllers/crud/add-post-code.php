@@ -18,17 +18,19 @@ $modules = allModule($pdo); // Get available modules
 
 if(isset($_POST['btn_add_post'])){ // If add post button clicked
 
-    // Handle image upload
-    $target_dir = BASE_PATH . "/uploads/";
-    $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
-    $allowed = ['jpg', 'jpeg', 'png', 'gif'];
-    $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+    if (isset($_FILES['fileToUpload']) && $_FILES['fileToUpload']['error'] == 0) {
+        $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+        $allowed = ['jpg', 'jpeg', 'png', 'gif'];
+        $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
     
-    // Check file type
-    if (!in_array($imageFileType, $allowed)) {
-        $_SESSION['status'] = 'Only JPG, JPEG, PNG & GIF files are allowed!';
-        header('location: add-post-code.php');
-        exit();
+        // Check file type
+        if (!in_array($imageFileType, $allowed)) {
+            $_SESSION['status'] = 'Only JPG, JPEG, PNG & GIF files are allowed!';
+            header('location: add-post-code.php');
+            exit();
+        }
+    
+        $imageName = $_FILES['fileToUpload']['name']; // Set image name if uploaded
     }
 
     // Check if required fields are empty
