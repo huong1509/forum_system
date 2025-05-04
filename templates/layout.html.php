@@ -1,7 +1,6 @@
 <?php
 // Declare the BASE_URL variable to use as the base for all links
 $BASE_URL = '/forum_system';
-
 ?>
 
 <!doctype html>
@@ -10,11 +9,15 @@ $BASE_URL = '/forum_system';
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title><?php if(isset($title)) { echo"$title"; }?></title> <!-- Display the page title if $title is set -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet"> <!-- Load Bootstrap 5 CSS -->
     
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet"> <!-- Load Bootstrap 5 CSS -->
+
 </head>
 
 <body>
+
+
+
     <div class="bg-dark">
         <div class="container">
             <div class="row">
@@ -63,6 +66,12 @@ $BASE_URL = '/forum_system';
 
 <main><?=$output?></main>  <!-- Main content area where $output will be displayed -->
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>   <!-- Load Bootstrap 5 JavaScript bundle -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js">
+    $(function(){
+    $(".btn-toggle-menu").click(function() {
+        $("#wrapper").toggleClass("toggled");
+    });
+}) 
+</script>
 </body>
 </html>

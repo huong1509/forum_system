@@ -1,5 +1,5 @@
 <?php
-$title = 'Add Post'; // Set page title
+$title = 'Add Post.';// Set page title
 session_start(); // Start session
 
 if(!isset($_SESSION['authenticated'])){ // Check login

@@ -36,6 +36,7 @@
                                 <label for="new_role" class="form-label">Edit Role</label>
                                 <input type="text" name="new_role" class="form-control" id="email" value = "<?=htmlspecialchars($account['role'], ENT_QUOTES, 'UTF-8')?>"> <!-- role input -->
                             </div>
+                            
                             <div class="form-group mb-3">
                                 <button type="submit" name="btn_edit_user"  class="btn btn-primary">Edit User</button> <!-- edit button -->
                                 <button type="button" name="btn_cancel"  class="btn btn-secondary" onclick="window.location.href='user-manage-code.php'">Cancel</button> <!-- cancel link to user manage page -->
